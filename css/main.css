@@ -1,0 +1,14 @@
+* {
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+#player-cards{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+    width: 300px;
+    height: 100px;
+}
