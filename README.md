@@ -8,8 +8,8 @@ Values of cards:
 
 A: 1 or 11
   - This can only be 11 if it does not cause the user to be over 21, otherwise it is 1
-2: 2
-3: 3
+2: 2 </br>
+3: 3 </br>
 4: 4
 5: 5
 6: 6
