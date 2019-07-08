@@ -7,7 +7,8 @@ The objective of blackjack is to get as close as possible to the number 21 witho
 Values of cards:
 
 A: 1 or 11
-  - This can only be 11 if it does not cause the user to be over 21, otherwise it is 1 </br>
+  - This can only be 11 if it does not cause the user to be over 21, otherwise it is 1
+  </br>
 2: 2 </br>
 3: 3 </br>
 4: 4 </br>
