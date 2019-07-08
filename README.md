@@ -6,19 +6,19 @@ The objective of blackjack is to get as close as possible to the number 21 witho
 
 Values of cards:
 
-A: 1 or 11
-  - This can only be 11 if it does not cause the user to be over 21, otherwise it is 1
+A: 1 or 11 </br>
+  - This can only be 11 if it does not cause the user to be over 21, otherwise it is 1 </br>
 2: 2 </br>
 3: 3 </br>
-4: 4
-5: 5
-6: 6
-7: 7
-8: 8
-9: 9
-10: 10
-J: 10
-Q: 10
+4: 4 </br>
+5: 5 </br>
+6: 6 </br>
+7: 7 </br>
+8: 8 </br>
+9: 9 </br>
+10: 10 </br>
+J: 10 </br>
+Q: 10 </br>
 K:10
 
 
