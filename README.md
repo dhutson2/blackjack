@@ -21,7 +21,7 @@ A: 1 or 11
 J: 10 </br>
 Q: 10 </br>
 K:10
-
+</br>
 
 
 How to play:
