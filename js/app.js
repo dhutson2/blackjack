@@ -1,5 +1,4 @@
-const sortedDeck = []
-const shuffledDeck = []
+let shuffledDeck = []
 const suits = ["spades", "diamonds", "clubs", "hearts"];
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
@@ -21,12 +20,10 @@ class Deck {
 	}
   }
 
-const deck1 = new Deck
-console.log(deck1.deck)
+  const newDeck = new Deck;
 
 // thank you fisher yates shuffle method!
 const shuffle = (array) => {
-	const shuffledDeck = []
 	let cards = array.length, i;
 	while(cards > 0){
 		i = Math.floor(Math.random()*cards--)
@@ -34,3 +31,16 @@ const shuffle = (array) => {
 	}
 	return shuffledDeck;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
