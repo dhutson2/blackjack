@@ -24,7 +24,7 @@ class Player{
 	constructor(name){
 		this.name = name;
 		this.hand = [];
-		this.turn = false;
+		this.turn = true;
 	}
 }
 
@@ -48,6 +48,18 @@ const shuffle = (array) => {
 		shuffledDeck.push(array.splice(i, 1)[0]);
 	}
 	return shuffledDeck;
+}
+
+const dealPlayerCard = () => {
+	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
+	newPlayer.hand.push(card);
+	shuffledDeck.splice(card, 1);
+}
+
+const dealDealerCard = () => {
+	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
+	newDealer.hand.push(card);
+	shuffledDeck.splice(card, 1);
 }
 
 
