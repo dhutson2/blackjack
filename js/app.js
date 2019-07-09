@@ -20,7 +20,25 @@ class Deck {
 	}
   }
 
+class Player{
+	constructor(name){
+		this.name = name;
+		this.hand = [];
+		this.turn = false;
+	}
+}
+
+class Dealer{
+	constructor(){
+		this.name = 'dealer';
+		this.hand = [];
+		this.turn = false;
+	}
+}
+
   const newDeck = new Deck;
+  const newPlayer = new Player('derek');
+  const newDealer = new Dealer;
 
 // thank you fisher yates shuffle method!
 const shuffle = (array) => {
