@@ -1,6 +1,5 @@
 let shuffledDeck = []
 const usedCards = []
-const combinedCards = []
 const suits = ["spades", "diamonds", "clubs", "hearts"];
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
@@ -68,6 +67,13 @@ class Dealer{
   const newPlayer = new Player('derek');
   const newDealer = new Dealer;
 
+
+const shuffleAndDeal = () => {
+	makeNewDeck();
+	shuffle(newDeck.deck);
+	dealCards();
+}
+
 // thank you fisher yates shuffle method!
 const shuffle = (array) => {
 	let cards = array.length, i;
@@ -86,8 +92,22 @@ const makeNewDeck = () => {
 	newDealer.hand = []
 }
 
+// deal player and dealer 2 cards each
+const dealCards = () => {
+	for(let i = 1; i <= 2; i++){
+	let playerCards = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
+	newPlayer.hand.push(playerCards);
+	shuffledDeck.splice(playerCards, 1);
+	let dealerCards = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
+	newDealer.hand.push(dealerCards);
+	shuffledDeck.splice(dealerCards, 1);
+	}
+	console.log(addPlayerCardValues());
+	console.log(checkDealerFaceCard());
+}
+
 // give player a card, put it in their hand, and display hand total
-const dealPlayerCard = () => {
+const playerHit = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newPlayer.hand.push(card);
 	shuffledDeck.splice(card, 1);
@@ -96,7 +116,7 @@ const dealPlayerCard = () => {
 }
 
 // give dealer a card, put it in their hand, and display hand total
-const dealDealerCard = () => {
+const dealerHit = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
 	shuffledDeck.splice(card, 1);
@@ -160,6 +180,14 @@ const checkDealerForWin = () => {
 		console.log('dealer loses with ' + dealerPoints + '!')
 	} else if(dealerPoints < 21){
 		console.log('dealer currently has ' + dealerPoints)
+	}
+}
+
+const checkDealerFaceCard = () => {
+	if(newDealer.hand[0].value == 11){
+		console.log('Oh sh*t dealer has ' + newDealer.hand[0].value + '!')
+	} else {
+		console.log('Dealer face card is ' + newDealer.hand[0].value + '.')
 	}
 }
 
