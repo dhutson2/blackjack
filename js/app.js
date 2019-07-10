@@ -68,6 +68,7 @@ const dealPlayerCard = () => {
 	newPlayer.hand.push(card);
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
+	addPlayerCardValues();
 }
 
 const dealDealerCard = () => {
@@ -75,47 +76,67 @@ const dealDealerCard = () => {
 	newDealer.hand.push(card);
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card);
+	addDealerCardValues();
 }
 
 const addDealerCardValues = () => {
-	handPoints = 0
+	dealerPoints = 0
 	for(let i = 0; i < newDealer.hand.length; i++){
 		if(newDealer.hand[i].value == 'J'){
-			handPoints += 10
+			dealerPoints += 10
 		} else if(newDealer.hand[i].value == 'Q'){
-			handPoints += 10
+			dealerPoints += 10
 		} else if(newDealer.hand[i].value == 'K'){
-			handPoints += 10
+			dealerPoints += 10
 		} else if(newDealer.hand[i].value == 'A'){
-			handPoints += 11
+			dealerPoints += 11
 		} else{
-			handPoints += parseInt(newDealer.hand[i].value)
+			dealerPoints += parseInt(newDealer.hand[i].value)
 		}
 	}
-	return handPoints
+	checkDealerForWin();
+	return dealerPoints
 }
 
 const addPlayerCardValues = () => {
-	handPoints = 0
+	playerPoints = 0
 	for(let i = 0; i < newPlayer.hand.length; i++){
 		if(newPlayer.hand[i].value == 'J'){
-			handPoints += 10
+			playerPoints += 10
 		} else if(newPlayer.hand[i].value == 'Q'){
-			handPoints += 10
+			playerPoints += 10
 		} else if(newPlayer.hand[i].value == 'K'){
-			handPoints += 10
+			playerPoints += 10
 		} else if(newPlayer.hand[i].value == 'A'){
-			handPoints += 11
+			playerPoints += 11
 		} else{
-			handPoints += parseInt(newPlayer.hand[i].value)
+			playerPoints += parseInt(newPlayer.hand[i].value)
 		}
 	}
-	return handPoints
+	checkPlayerForWin();
+	return playerPoints
 }
 
 
+const checkPlayerForWin = () => {
+	if(playerPoints == 21){
+		console.log('player wins with ' + playerPoints + '!')
+	} else if(playerPoints > 21){
+		console.log('player loses with ' + playerPoints + '!')
+	} else if(playerPoints < 21){
+		console.log('player currently has ' + playerPoints)
+	}
+}
 
-
+const checkDealerForWin = () => {
+	if(dealerPoints == 21){
+		console.log('dealer wins with ' + dealerPoints + '!')
+	} else if(dealerPoints > 21){
+		console.log('dealer loses with ' + dealerPoints + '!')
+	} else if(dealerPoints < 21){
+		console.log('dealer currently has ' + dealerPoints)
+	}
+}
 
 
 
