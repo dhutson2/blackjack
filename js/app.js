@@ -1,4 +1,6 @@
 let shuffledDeck = []
+const usedCards = []
+const combinedCards = []
 const suits = ["spades", "diamonds", "clubs", "hearts"];
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
@@ -50,20 +52,48 @@ const shuffle = (array) => {
 	return shuffledDeck;
 }
 
+//TODO:
+// Make a new deck everytime game ends
+// const makeNewDeck = () => {
+// 	combinedCards.push(shuffledDeck.concat(usedCards));
+// 	shuffledDeck = []
+// 	console.log(combinedCards)
+// 	console.log(shuffledDeck)
+// 	newPlayer.hand = []
+// 	newDealer.hand = []
+// }
+
 const dealPlayerCard = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newPlayer.hand.push(card);
 	shuffledDeck.splice(card, 1);
+	usedCards.push(card)
 }
 
 const dealDealerCard = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
 	shuffledDeck.splice(card, 1);
+	usedCards.push(card);
 }
 
-
-
+const addCardValues = () => {
+	handPoints = 0
+	for(let i = 0; i < newDealer.hand.length; i++){
+		if(newDealer.hand[i].value == 'J'){
+			handPoints += 10
+		} else if(newDealer.hand[i].value == 'Q'){
+			handPoints += 10
+		} else if(newDealer.hand[i].value == 'K'){
+			handPoints += 10
+		} else if(newDealer.hand[i].value == 'A'){
+			handPoints += 11
+		} else{
+			handPoints += parseInt(newDealer.hand[i].value)
+		}
+	}
+	return handPoints
+}
 
 
 
