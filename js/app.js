@@ -76,6 +76,7 @@ const shuffleAndDeal = () => {
 	makeNewDeck();
 	shuffle(newDeck.deck);
 	dealCards();
+	checkForWinner();
 }
 
 // thank you fisher yates shuffle method!
@@ -118,6 +119,7 @@ const playerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
 	playerPoints = addPlayerCardValues();
+	checkForWinner();
 }
 
 // give dealer a card, put it in their hand, and display hand total
@@ -128,6 +130,7 @@ const dealerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card);
 	dealerPoints = addDealerCardValues();
+	checkForWinner();
 }
 
 const addDealerCardValues = () => {
@@ -144,7 +147,7 @@ const addDealerCardValues = () => {
 			dealerPoints += parseInt(newDealer.hand[i].value)
 		}
 	}
-	checkDealerForWin();
+	showDealerValues();
 	return dealerPoints
 }
 
@@ -162,27 +165,23 @@ const addPlayerCardValues = () => {
 			playerPoints += parseInt(newPlayer.hand[i].value)
 		}
 	}
-	checkPlayerForWin();
+	showPlayerValues();
 	return playerPoints
 }
 
 
-const checkPlayerForWin = () => {
-	if(playerPoints == 21){
-		console.log('player wins with ' + playerPoints + '!')
-	} else if(playerPoints > 21){
-		console.log('player loses with ' + playerPoints + '!')
-	} else if(playerPoints < 21){
+const showPlayerValues = () => {
+	if(playerPoints > 21){
+		console.log('player loses with ' + playerPoints)
+	} else{
 		console.log('player currently has ' + playerPoints)
 	}
 }
 
-const checkDealerForWin = () => {
+const showDealerValues = () => {
 	if(dealerPoints == 21){
-		console.log('dealer wins with ' + dealerPoints + '!')
-	} else if(dealerPoints > 21){
-		console.log('dealer loses with ' + dealerPoints + '!')
-	} else if(dealerPoints < 21){
+		console.log('dealer wins with '+ dealerPoints)
+	}else{
 		console.log('dealer currently has ' + dealerPoints)
 	}
 }
@@ -195,7 +194,19 @@ const checkDealerFaceCard = () => {
 	}
 }
 
-
+const checkForWinner = () => {
+	if(dealerPoints == 21){
+		console.log('dealer wins with ' + dealerPoints)
+	} else if(playerPoints == 21) {
+		console.log('player wins with ' + playerPoints)
+	} else if(playerPoints < 17 && dealerPoints >= 17 && dealerPoints <= 21) {
+		console.log('dealer wins with ' + dealerPoints)
+	} else if(playerPoints >= 17 && playerPoints <= 21 && playerPoints > dealerPoints){
+		console.log('player wins with ' + playerPoints);
+	} else if(dealerPoints > 21){
+		console.log('player wins with '+ playerPoints)
+	}
+}
 
 
 
