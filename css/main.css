@@ -58,3 +58,8 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .card{
+    width: 150px;
+    margin: 20px;
+  }
