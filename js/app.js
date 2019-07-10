@@ -67,8 +67,12 @@ class Dealer{
   const newPlayer = new Player('derek');
   const newDealer = new Dealer;
 
+  let playerPoints = 0
+  let dealerPoints = 0
 
 const shuffleAndDeal = () => {
+	playerPoints = 0
+	dealerPoints = 0
 	makeNewDeck();
 	shuffle(newDeck.deck);
 	dealCards();
@@ -108,24 +112,25 @@ const dealCards = () => {
 
 // give player a card, put it in their hand, and display hand total
 const playerHit = () => {
+	playerPoints = 0
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newPlayer.hand.push(card);
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
-	addPlayerCardValues();
+	playerPoints = addPlayerCardValues();
 }
 
 // give dealer a card, put it in their hand, and display hand total
 const dealerHit = () => {
+	dealerPoints = 0
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card);
-	addDealerCardValues();
+	dealerPoints = addDealerCardValues();
 }
 
 const addDealerCardValues = () => {
-	dealerPoints = 0
 	for(let i = 0; i < newDealer.hand.length; i++){
 		if(newDealer.hand[i].value == 'J'){
 			dealerPoints += 10
@@ -144,7 +149,6 @@ const addDealerCardValues = () => {
 }
 
 const addPlayerCardValues = () => {
-	playerPoints = 0
 	for(let i = 0; i < newPlayer.hand.length; i++){
 		if(newPlayer.hand[i].value == 'J'){
 			playerPoints += 10
