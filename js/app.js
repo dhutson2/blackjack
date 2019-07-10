@@ -64,7 +64,7 @@ class Dealer{
 	}
 }
 
-  const newDeck = new Deck;
+  let newDeck = new Deck;
   const newPlayer = new Player('derek');
   const newDealer = new Dealer;
 
@@ -78,17 +78,15 @@ const shuffle = (array) => {
 	return shuffledDeck;
 }
 
-//TODO:
 // Make a new deck everytime game ends
-// const makeNewDeck = () => {
-// 	combinedCards.push(shuffledDeck.concat(usedCards));
-// 	shuffledDeck = []
-// 	console.log(combinedCards)
-// 	console.log(shuffledDeck)
-// 	newPlayer.hand = []
-// 	newDealer.hand = []
-// }
+const makeNewDeck = () => {
+	newDeck = new Deck
+	shuffledDeck = []
+	newPlayer.hand = []
+	newDealer.hand = []
+}
 
+// give player a card, put it in their hand, and display hand total
 const dealPlayerCard = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newPlayer.hand.push(card);
@@ -97,6 +95,7 @@ const dealPlayerCard = () => {
 	addPlayerCardValues();
 }
 
+// give dealer a card, put it in their hand, and display hand total
 const dealDealerCard = () => {
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
