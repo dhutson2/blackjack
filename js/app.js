@@ -77,7 +77,7 @@ const dealDealerCard = () => {
 	usedCards.push(card);
 }
 
-const addCardValues = () => {
+const addDealerCardValues = () => {
 	handPoints = 0
 	for(let i = 0; i < newDealer.hand.length; i++){
 		if(newDealer.hand[i].value == 'J'){
@@ -95,6 +95,23 @@ const addCardValues = () => {
 	return handPoints
 }
 
+const addPlayerCardValues = () => {
+	handPoints = 0
+	for(let i = 0; i < newPlayer.hand.length; i++){
+		if(newPlayer.hand[i].value == 'J'){
+			handPoints += 10
+		} else if(newPlayer.hand[i].value == 'Q'){
+			handPoints += 10
+		} else if(newPlayer.hand[i].value == 'K'){
+			handPoints += 10
+		} else if(newPlayer.hand[i].value == 'A'){
+			handPoints += 11
+		} else{
+			handPoints += parseInt(newPlayer.hand[i].value)
+		}
+	}
+	return handPoints
+}
 
 
 
