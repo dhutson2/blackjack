@@ -76,7 +76,8 @@ const shuffleAndDeal = () => {
 	makeNewDeck();
 	shuffle(newDeck.deck);
 	dealCards();
-	showPlayerValues();
+	addPlayerCardValues();
+	addDealerCardValues();
 }
 
 // thank you fisher yates shuffle method!
@@ -107,7 +108,6 @@ const dealCards = () => {
 	newDealer.hand.push(dealerCards);
 	shuffledDeck.splice(dealerCards, 1);
 	}
-	console.log(addPlayerCardValues());
 	console.log(checkDealerFaceCard());
 }
 
@@ -119,12 +119,11 @@ const playerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
 	playerPoints = addPlayerCardValues();
-	showPlayerValues();
+	// showPlayerValues();
 }
 
 // give dealer a card, put it in their hand, and display hand total
 const dealerHit = () => {
-	checkForWinner();
 	dealerPoints = 0
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
@@ -148,7 +147,7 @@ const addDealerCardValues = () => {
 			dealerPoints += parseInt(newDealer.hand[i].value)
 		}
 	}
-	showDealerValues();
+	checkForBlackjack();
 	return dealerPoints
 }
 
@@ -181,11 +180,9 @@ const showPlayerValues = () => {
 	}
 }
 
-const showDealerValues = () => {
+const checkForBlackjack = () => {
 	if(dealerPoints == 21){
 		console.log('dealer wins with '+ dealerPoints)
-	}else{
-		console.log('dealer currently has ' + dealerPoints)
 	}
 }
 
@@ -210,8 +207,9 @@ const checkForWinner = () => {
 		console.log('player wins with ' + playerPoints);
 	} else if(dealerPoints > 21){
 		console.log('player wins with '+ playerPoints)
+	} else if(dealerPoints == playerPoints && playerPoints >= 17){
+		console.log('push!')
 	}
 }
-
 
 
