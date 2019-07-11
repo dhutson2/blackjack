@@ -10,6 +10,18 @@ body{
     color: white;
 }
 
+#player-card{
+  width: 400px;
+  height: 200px;
+  margin-top: 220px;
+  margin-left: -850px;
+}
+
+#dealer-card{
+  width: 400px;
+  height: 200px;
+}
+
 #title{
   font-family: 'Literata', serif;
   font-weight: 600;

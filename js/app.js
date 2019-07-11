@@ -7,6 +7,17 @@ const btn = $("#instruction-button")[0];
 const span = $(".close")[0];
 const $shuffle = $('#shuffle')
 
+//TODO:
+
+// Make object to construct images...
+// Constructor parameters are suit and value that will tell the object which card image to render
+// Images object has key: value of Qclubs, 9,hearts, etc. and value is SVG image link
+// EX:
+//  const images = {
+// 	'9hearts': '../cardImages/9_of_hearts.svg'
+// }
+
+
 $(document).ready(function() {
 	console.log('fully loaded!')
 	$('#home-page').show()
@@ -83,6 +94,32 @@ class Dealer{
   let dealerPoints = 0
   let dealerWins = 0
 
+//TODO:
+// consolidate game logic into fewer functions based around button pressing
+
+//Shuffle and Deal button should:
+//	- Clear player hands
+//	- Clear player hand point values
+//	- Make and shuffle a new deck
+//	- Give dealer and player 2 cards
+//	- Check for any blackjack
+//		- If blackjack award W or draw
+//	- Display player hand points and images
+//	- Display dealer first card points and image
+//
+//Hit button should:
+//	- Give player another card and add that value to total
+//	- return current hand points
+//	- If hand points exceed 21 end game and give dealer W
+//
+//Stand button should:
+//	- Give dealer one card at a time, after each card checking if:
+//		- hand value = 21
+//		- hand value > 21
+//		- hand value > 17
+//	- Compare player and dealer hand point values when one condition is reached
+//	- Award W or draw based on hand total comparison
+
 const shuffleAndDeal = () => {
 	playerPoints = 0
 	dealerPoints = 0
@@ -126,6 +163,7 @@ const dealCards = () => {
 	console.log(checkDealerFaceCard());
 }
 
+//FIXME:
 // give player a card, put it in their hand, and display hand total
 const playerHit = () => {
 	playerPoints = 0
@@ -138,6 +176,7 @@ const playerHit = () => {
 	checkForWinner();
 }
 
+//FIXME:
 // give dealer a card, put it in their hand, and display hand total
 const dealerHit = () => {
 	dealerPoints = 0
@@ -150,6 +189,7 @@ const dealerHit = () => {
 	getDealerScore();
 }
 
+//FIXME:
 const addDealerCardValues = () => {
 	for(let i = 0; i < newDealer.hand.length; i++){
 		if(newDealer.hand[i].value == 'J'){
@@ -168,6 +208,7 @@ const addDealerCardValues = () => {
 	return dealerPoints
 }
 
+//FIXME:
 const addPlayerCardValues = () => {
 	for(let i = 0; i < newPlayer.hand.length; i++){
 		if(newPlayer.hand[i].value == 'J'){
@@ -186,7 +227,7 @@ const addPlayerCardValues = () => {
 	return playerPoints
 }
 
-
+//FIXME:
 const showPlayerValues = () => {
 	if(playerPoints > 21){
 		console.log('player loses with ' + playerPoints)
@@ -203,6 +244,7 @@ const showPlayerValues = () => {
 	}
 }
 
+//FIXME:
 const checkForFlipWin = () => {
 	if(dealerPoints == 21){
 		$('#dealer-wins').empty()
@@ -213,6 +255,7 @@ const checkForFlipWin = () => {
 	}
 }
 
+//FIXME:
 const checkDealerFaceCard = () => {
 	if(newDealer.hand[0].value == 11){
 		console.log('Oh sh*t dealer has ' + newDealer.hand[0].value + '!')
@@ -221,8 +264,7 @@ const checkDealerFaceCard = () => {
 	}
 }
 
-// add this only to dealer hit card
-//in player hit just do check value to ensure under 21
+//FIXME:
 const checkForWinner = () => {
 	if(dealerPoints == 21){
 		console.log('dealer wins with 21!')
