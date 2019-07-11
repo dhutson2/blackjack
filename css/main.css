@@ -21,6 +21,11 @@ body{
   max-width: 650px;
 }
 
+#game-buttons{
+  margin-top: 550px;
+  margin-left: 20px;
+}
+
 #player{
     position: absolute;
     top: 50%;

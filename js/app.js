@@ -13,13 +13,17 @@ $(document).ready(function() {
 	$('#cards').hide()
    });
 
-$('#shuffle').click(function(){
+$('#start-game').click(function(){
 	$('#home-page').hide()
 	$('#title').hide()
-	$('#instruction-button').hide()
+	$('#homepage-buttons').hide()
 	shuffleAndDeal();
 	$('#cards').show()
   })
+
+$('#shuffle').click(function(){
+	shuffleAndDeal();
+})
 
 btn.onclick = function() {
   modal.style.display = "block";
