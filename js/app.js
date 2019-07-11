@@ -76,7 +76,7 @@ const shuffleAndDeal = () => {
 	makeNewDeck();
 	shuffle(newDeck.deck);
 	dealCards();
-	checkForWinner();
+	showPlayerValues();
 }
 
 // thank you fisher yates shuffle method!
@@ -119,11 +119,12 @@ const playerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
 	playerPoints = addPlayerCardValues();
-	checkForWinner();
+	showPlayerValues();
 }
 
 // give dealer a card, put it in their hand, and display hand total
 const dealerHit = () => {
+	checkForWinner();
 	dealerPoints = 0
 	let card = shuffledDeck[Math.floor(Math.random()*shuffledDeck.length)]
 	newDealer.hand.push(card);
@@ -173,7 +174,9 @@ const addPlayerCardValues = () => {
 const showPlayerValues = () => {
 	if(playerPoints > 21){
 		console.log('player loses with ' + playerPoints)
-	} else{
+	} else if(playerPoints == 21){
+		console.log('player wins with 21!')
+	} else {
 		console.log('player currently has ' + playerPoints)
 	}
 }
@@ -194,6 +197,8 @@ const checkDealerFaceCard = () => {
 	}
 }
 
+// add this only to dealer hit card
+//in player hit just do check value to ensure under 21
 const checkForWinner = () => {
 	if(dealerPoints == 21){
 		console.log('dealer wins with ' + dealerPoints)
