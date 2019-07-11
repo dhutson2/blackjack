@@ -78,6 +78,7 @@ const shuffleAndDeal = () => {
 	dealCards();
 	addPlayerCardValues();
 	addDealerCardValues();
+	getPlayerScore();
 }
 
 // thank you fisher yates shuffle method!
@@ -119,7 +120,7 @@ const playerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card)
 	playerPoints = addPlayerCardValues();
-	// showPlayerValues();
+	getPlayerScore();
 }
 
 // give dealer a card, put it in their hand, and display hand total
@@ -131,6 +132,7 @@ const dealerHit = () => {
 	usedCards.push(card);
 	dealerPoints = addDealerCardValues();
 	checkForWinner();
+	getDealerScore();
 }
 
 const addDealerCardValues = () => {
@@ -182,7 +184,7 @@ const showPlayerValues = () => {
 
 const checkForBlackjack = () => {
 	if(dealerPoints == 21){
-		console.log('dealer wins with '+ dealerPoints)
+		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
 	}
 }
 
@@ -198,11 +200,11 @@ const checkDealerFaceCard = () => {
 //in player hit just do check value to ensure under 21
 const checkForWinner = () => {
 	if(dealerPoints == 21){
-		console.log('dealer wins with ' + dealerPoints)
+		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
 	} else if(playerPoints == 21) {
 		console.log('player wins with ' + playerPoints)
 	} else if(playerPoints < 17 && dealerPoints >= 17 && dealerPoints <= 21) {
-		console.log('dealer wins with ' + dealerPoints)
+		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
 	} else if(playerPoints >= 17 && playerPoints <= 21 && playerPoints > dealerPoints){
 		console.log('player wins with ' + playerPoints);
 	} else if(dealerPoints > 21){
@@ -211,5 +213,29 @@ const checkForWinner = () => {
 		console.log('push!')
 	}
 }
+
+const getDealerScore = () => {
+	$('#dealer-stats').empty()
+	$('#dealer-stats').append('Hand points: ' + dealerPoints)
+}
+
+
+const getPlayerScore = () => {
+	$('#player-stats').empty()
+	$('#player-stats').append('Hand points: ' + playerPoints)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
