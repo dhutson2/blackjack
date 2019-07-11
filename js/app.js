@@ -16,8 +16,8 @@ $(document).ready(function() {
 $('#shuffle').click(function(){
 	$('#home-page').hide()
 	$('#title').hide()
-	shuffleAndDeal();
 	$('#instruction-button').hide()
+	shuffleAndDeal();
 	$('#cards').show()
   })
 

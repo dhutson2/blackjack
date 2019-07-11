@@ -14,8 +14,11 @@ body{
   font-family: 'Literata', serif;
   font-weight: 600;
   font-size: 50px;
+  margin: auto;
   margin-top: 200px;
+  margin-left: 500px 500px;
   color: white;
+  max-width: 650px;
 }
 
 #player{
