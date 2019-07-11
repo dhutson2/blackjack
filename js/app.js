@@ -68,7 +68,9 @@ class Dealer{
   const newDealer = new Dealer;
 
   let playerPoints = 0
+  let playerWins = 0
   let dealerPoints = 0
+  let dealerWins = 0
 
 const shuffleAndDeal = () => {
 	playerPoints = 0
@@ -79,6 +81,7 @@ const shuffleAndDeal = () => {
 	addPlayerCardValues();
 	addDealerCardValues();
 	getPlayerScore();
+	checkForWinner();
 }
 
 // thank you fisher yates shuffle method!
@@ -121,6 +124,7 @@ const playerHit = () => {
 	usedCards.push(card)
 	playerPoints = addPlayerCardValues();
 	getPlayerScore();
+	checkForWinner();
 }
 
 // give dealer a card, put it in their hand, and display hand total
@@ -149,7 +153,7 @@ const addDealerCardValues = () => {
 			dealerPoints += parseInt(newDealer.hand[i].value)
 		}
 	}
-	checkForBlackjack();
+	checkForFlipWin();
 	return dealerPoints
 }
 
@@ -175,16 +179,26 @@ const addPlayerCardValues = () => {
 const showPlayerValues = () => {
 	if(playerPoints > 21){
 		console.log('player loses with ' + playerPoints)
+		$('#dealer-wins').empty()
+		dealerWins++
+		$('#dealer-wins').append('Wins: ' + dealerWins)
 	} else if(playerPoints == 21){
 		console.log('player wins with 21!')
+		$('#player-wins').empty()
+		playerWins++
+		$('#player-wins').append('Wins: ' + playerWins)
 	} else {
 		console.log('player currently has ' + playerPoints)
 	}
 }
 
-const checkForBlackjack = () => {
+const checkForFlipWin = () => {
 	if(dealerPoints == 21){
-		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
+		$('#dealer-wins').empty()
+		dealerWins++
+		$('#dealer-wins').append('Wins: ' + dealerWins)
+	} else if(dealerPoints >= 17 && playerPoints >= 17 && dealerPoints > playerPoints){
+		console.log('dealer wins with ' + dealerPoints);
 	}
 }
 
@@ -200,29 +214,49 @@ const checkDealerFaceCard = () => {
 //in player hit just do check value to ensure under 21
 const checkForWinner = () => {
 	if(dealerPoints == 21){
-		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
+		console.log('dealer wins with 21!')
+		$('#dealer-wins').empty()
+		dealerWins++
+		$('#dealer-wins').append('Wins: ' + dealerWins)
 	} else if(playerPoints == 21) {
 		console.log('player wins with ' + playerPoints)
+		$('#player-wins').empty()
+		playerWins++
+		$('#player-wins').append('Wins: ' + playerWins)
+	} else if(dealerPoints > 21) {
+		console.log('player wins with ' + playerPoints)
+		$('#player-wins').empty()
+		playerWins++
+		$('#player-wins').append('Wins: ' + playerWins)
 	} else if(playerPoints < 17 && dealerPoints >= 17 && dealerPoints <= 21) {
-		$('#dealer-stats').append('dealer wins with '+ dealerPoints)
+		console.log('dealer wins!')
+		$('#dealer-wins').empty()
+		dealerWins++
+		$('#dealer-wins').append('Wins: ' + dealerWins)
 	} else if(playerPoints >= 17 && playerPoints <= 21 && playerPoints > dealerPoints){
 		console.log('player wins with ' + playerPoints);
-	} else if(dealerPoints > 21){
-		console.log('player wins with '+ playerPoints)
+		$('#player-wins').empty()
+		playerWins++
+		$('#player-wins').append('Wins: ' + playerWins)
+	} else if(playerPoints >= 17 && playerPoints <= 21 && playerPoints < dealerPoints){
+		console.log('dealer wins with ' + dealerPoints);
+		$('#dealer-wins').empty()
+		dealerWins++
+		$('#dealer-wins').append('Wins: ' + dealerWins)
 	} else if(dealerPoints == playerPoints && playerPoints >= 17){
 		console.log('push!')
 	}
 }
 
 const getDealerScore = () => {
-	$('#dealer-stats').empty()
-	$('#dealer-stats').append('Hand points: ' + dealerPoints)
+	$('#dealer-hand').empty()
+	$('#dealer-hand').append('Hand points: ' + dealerPoints)
 }
 
 
 const getPlayerScore = () => {
-	$('#player-stats').empty()
-	$('#player-stats').append('Hand points: ' + playerPoints)
+	$('#player-hand').empty()
+	$('#player-hand').append('Hand points: ' + playerPoints)
 }
 
 

@@ -20,7 +20,7 @@ body{
     height: 100px;
 }
 
-#dealer-stats{
+#dealer-hand{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -31,7 +31,7 @@ body{
     font-size: 30px;
 }
 
-#dealer-games-won{
+#dealer-wins{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,7 +42,7 @@ body{
   font-size: 30px;
 }
 
-#player-stats{
+#player-hand{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -53,7 +53,7 @@ body{
   font-size: 30px;
 }
 
-#player-games-won{
+#player-wins{
   position: absolute;
   top: 50%;
   left: 50%;
