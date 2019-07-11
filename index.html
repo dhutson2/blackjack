@@ -10,6 +10,33 @@
 </head>
 <body>
 
+    <div id='home-page'></div>
+        <h1 id='title' class="d-flex justify-content-center col-6 offset-3">
+            Welcome to Blackjack!<br>
+            Where the odds are supposed to be in your favor...
+            But they usually aren't
+        </h1>
+        <div id='homepage-buttons'>
+            <button id='shuffle' class="btn btn-success" style='margin:20px'>Shuffle and Deal!</button>
+            <button id="instruction-button" class="btn btn-primary" style='margin:20px'>How To Play</button>
+                <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>
+                        Fun fact: Blackjack is the casino card game that gives the player the highest odds of winning each hand<br>
+                        <br>
+                        The Objective of Blackjack is to get as close as possible to 21 without going over.<br>
+                        If the dealer gets closer to 21 than the player, the dealer will win.<br>
+                        The player can take as many cards as desired, one at a time, until 21 is reached or player stands.<br>
+                        When the player ends turn (if cards are below 21), the dealer will play until at least 17 is reached or 21 is exceeded.<br>
+                        If player wins hand, they get a point. Otherwise, they will lose a point.<br>
+                    </p>
+                </div>
+    
+                </div>
+        </div>
+    </div>
+
     <div id='cards'>
         <div id='dealer' class="d-flex justify-content-center" style='margin: 20px'>
             <h1>
@@ -33,31 +60,11 @@
                     Wins:
                 </span>
         </div>
-    </div>
-    
-
-    <div id='homepage-buttons'>
-        <button>Shuffle and Deal!</button>
-        <button id="instruction-button">How To Play</button>
-            <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>
-                    The Objective of Blackjack is to get as close as possible to 21 without going over.<br>
-                    If the dealer gets closer to 21 than the player, the dealer will win.<br>
-                    The player can take as many cards as desired, one at a time, until 21 is reached or player stands.<br>
-                    When the player ends turn (if cards are below 21), the dealer will play until at least 17 is reached or 21 is exceeded.<br>
-                    If player wins hand, they get a point. Otherwise, they will lose a point.<br>
-                </p>
-            </div>
-
-            </div>
+        <!-- TODO: add image of displayed card to screen -->
+        <img src="cardImages/ace_of_hearts.svg" class='card'>
+        <img src="cardImages/jack_of_spades2.svg" class='card'>
     </div>
 
-
-    <!-- TODO: add image of displayed card to screen -->
-        <img src="cardImages/queen_of_clubs2.svg" class='card'>
-        <img src="cardImages/8_of_hearts.svg" class='card'>
 
         
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
