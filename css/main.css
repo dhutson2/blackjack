@@ -10,11 +10,11 @@ body{
     color: white;
 }
 
-#player-card{
-  width: 400px;
-  height: 200px;
-  margin-top: 220px;
-  margin-left: -850px;
+#player-current-cards{
+  /* width: 100px;
+  height: 100px; */
+  margin-top: 20px;
+  margin-left: -550px;
 }
 
 #dealer-card{

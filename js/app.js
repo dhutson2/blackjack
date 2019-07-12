@@ -73,13 +73,7 @@ const images = {
 }
 
 // this will find card in images array and add it to body
-//TODO:
-// make face a changing variable that will update with cards drawn
-// make a loop that adds images on draw to a cards array in players hand
-const face = 'JClubs'
-let img = $('<img>')
-img.attr('src', images[face]);
-$('body').append(img)
+
 
 $(document).ready(function() {
 	console.log('fully loaded!')
@@ -92,11 +86,13 @@ $('#start-game').click(function(){
 	$('#title').hide()
 	$('#homepage-buttons').hide()
 	shuffleAndDeal();
+	renderCardFace();
 	$('#cards').show()
   })
 
 $('#shuffle').click(function(){
 	shuffleAndDeal();
+	renderCardFace();
 })
 
 $('#hit').click(function(){
@@ -158,15 +154,43 @@ class Dealer{
 	}
 }
 
+class addCardImages {
+	constructor(value, suit){
+		this.value = value
+		this.suit = suit
+		this.image = images[`${this.value}${this.suit}`]
+	}
+}
+
   let newDeck = new Deck;
-  const newPlayer = new Player('derek');
+  let newImage = new addCardImages(5, 'Hearts')
+  const newPlayer = new Player('player');
   const newDealer = new Dealer;
 
   let playerPoints = 0
   let playerWins = 0
   let dealerPoints = 0
   let dealerWins = 0
+  let playerCardId = []
 
+
+
+  //TODO:
+// make face a changing variable that will update with cards drawn
+// make a loop that adds images on draw to a cards array in players hand
+// Will also empty hand at start of loop so you don't get repeating cards in hand
+const renderCardFace = () => {
+	const face = newImage.image
+	let img = $('<img>')
+// img.attr('src', images[face],);
+img.attr({
+    src: face, 
+	height: "250px",
+	width: "150px",
+	margin: '15px'
+});
+$('#player-current-cards').append(img)
+}
 
 const shuffleAndDeal = () => {
 	playerPoints = 0
