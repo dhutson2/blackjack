@@ -132,6 +132,7 @@ class Deck {
 		for(let x = 0; x < values.length; x++)
 		{
 			const card = {value: values[x], suit: suits[i]};
+			card.image = images[`${card.value}${card.suit}`]
 			this.deck.push(card);
 		}
 	}
@@ -163,15 +164,14 @@ class addCardImages {
 }
 
   let newDeck = new Deck;
-  let newImage = new addCardImages(5, 'Hearts')
   const newPlayer = new Player('player');
+  let newImage = new addCardImages(6, 'Hearts')
   const newDealer = new Dealer;
 
   let playerPoints = 0
   let playerWins = 0
   let dealerPoints = 0
   let dealerWins = 0
-  let playerCardId = []
 
 
 
@@ -180,16 +180,21 @@ class addCardImages {
 // make a loop that adds images on draw to a cards array in players hand
 // Will also empty hand at start of loop so you don't get repeating cards in hand
 const renderCardFace = () => {
-	const face = newImage.image
-	let img = $('<img>')
-// img.attr('src', images[face],);
-img.attr({
-    src: face, 
-	height: "250px",
-	width: "150px",
-	margin: '15px'
-});
-$('#player-current-cards').append(img)
+	$('#player-current-cards').empty()
+	for(let i = 0; i < newPlayer.hand.length; i++){
+		console.log(newPlayer.hand[i].image)
+		let img = $('<img>')
+		// img.attr('src', images[face],);
+		img.attr({
+			src: newPlayer.hand[i].image, 
+			height: "250px",
+			width: "150px",
+			margin: '15px'
+		});
+		$('#player-current-cards').append(img)
+	}
+
+
 }
 
 const shuffleAndDeal = () => {
@@ -244,6 +249,7 @@ const playerHit = () => {
 	playerPoints = addPlayerCardValues();
 	getPlayerScore();
 	checkPlayerWin();
+	renderCardFace();
 }
 
 
