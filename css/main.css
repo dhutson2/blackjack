@@ -17,9 +17,9 @@ body{
   margin-left: -550px;
 }
 
-#dealer-card{
-  width: 400px;
-  height: 200px;
+#dealer-current-cards{
+  margin-top: 50px;
+  margin-left: -1000px;
 }
 
 #title{

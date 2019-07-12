@@ -86,13 +86,13 @@ $('#start-game').click(function(){
 	$('#title').hide()
 	$('#homepage-buttons').hide()
 	shuffleAndDeal();
-	renderCardFace();
+	renderPlayerCardFace();
 	$('#cards').show()
   })
 
 $('#shuffle').click(function(){
 	shuffleAndDeal();
-	renderCardFace();
+	renderPlayerCardFace();
 })
 
 $('#hit').click(function(){
@@ -102,7 +102,10 @@ $('#hit').click(function(){
 $('#stand').click(function(){
 	while(dealerPoints < 17){
 	dealerHit();
-	}
+	} if(dealerPoints >= 17)
+	renderDealerCardFace();
+	checkDealerWin();
+	getDealerScore();
 })
 
 btn.onclick = function() {
@@ -175,11 +178,8 @@ class addCardImages {
 
 
 
-  //TODO:
-// make face a changing variable that will update with cards drawn
-// make a loop that adds images on draw to a cards array in players hand
-// Will also empty hand at start of loop so you don't get repeating cards in hand
-const renderCardFace = () => {
+// Render visible cards to player hand on screen
+const renderPlayerCardFace = () => {
 	$('#player-current-cards').empty()
 	for(let i = 0; i < newPlayer.hand.length; i++){
 		console.log(newPlayer.hand[i].image)
@@ -193,8 +193,38 @@ const renderCardFace = () => {
 		});
 		$('#player-current-cards').append(img)
 	}
+}
 
+// Render dealers first card to screen
+const renderDealerFirstCardFace = () => {
+	$('#dealer-current-cards').empty()
+	for(let i = 0; i < 1; i++){
+		console.log(newPlayer.hand[i].image)
+		let img = $('<img>')
+		// img.attr('src', images[face],);
+		img.attr({
+			src: newDealer.hand[i].image, 
+			height: "250px",
+			width: "150px",
+			margin: '15px'
+		});
+		$('#dealer-current-cards').append(img)
+	}
+}
 
+const renderDealerCardFace = () => {
+	$('#dealer-current-cards').empty()
+	for(let i = 0; i < newDealer.hand.length; i++){
+		let img = $('<img>')
+		// img.attr('src', images[face],);
+		img.attr({
+			src: newDealer.hand[i].image, 
+			height: "250px",
+			width: "150px",
+			margin: '15px'
+		});
+		$('#dealer-current-cards').append(img)
+	}
 }
 
 const shuffleAndDeal = () => {
@@ -206,6 +236,7 @@ const shuffleAndDeal = () => {
 	addPlayerCardValues();
 	addDealerCardValues();
 	checkForBlackjack();
+	renderDealerFirstCardFace();
 }
 
 // thank you fisher yates shuffle method!
@@ -249,7 +280,7 @@ const playerHit = () => {
 	playerPoints = addPlayerCardValues();
 	getPlayerScore();
 	checkPlayerWin();
-	renderCardFace();
+	renderPlayerCardFace();
 }
 
 
@@ -261,8 +292,7 @@ const dealerHit = () => {
 	shuffledDeck.splice(card, 1);
 	usedCards.push(card);
 	dealerPoints = addDealerCardValues();
-	checkDealerWin();
-	getDealerScore();
+	renderDealerCardFace();
 }
 
 
