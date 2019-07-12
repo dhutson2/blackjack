@@ -17,6 +17,69 @@ const $shuffle = $('#shuffle')
 // 	'9hearts': '../cardImages/9_of_hearts.svg'
 // }
 
+const images = {
+	'2Hearts': 'cardImages/2_of_hearts.svg',
+	'3Hearts': 'cardImages/3_of_hearts.svg',
+	'4Hearts': 'cardImages/4_of_hearts.svg',
+	'5Hearts': 'cardImages/5_of_hearts.svg',
+	'6Hearts': 'cardImages/6_of_hearts.svg',
+	'7Hearts': 'cardImages/7_of_hearts.svg',
+	'8Hearts': 'cardImages/8_of_hearts.svg',
+	'9Hearts': 'cardImages/9_of_hearts.svg',
+	'10Hearts': 'cardImages/10_of_hearts.svg',
+	'JHearts': 'cardImages/jack_of_hearts2.svg',
+	'QHearts': 'cardImages/queen_of_hearts2.svg',
+	'KHearts': 'cardImages/king_of_hearts2.svg',
+	'AHearts': 'cardImages/ace_of_hearts.svg',
+	'2Diamonds': 'cardImages/2_of_diamonds.svg',
+	'3Diamonds': 'cardImages/3_of_diamonds.svg',
+	'4Diamonds': 'cardImages/4_of_diamonds.svg',
+	'5Diamonds': 'cardImages/5_of_diamonds.svg',
+	'6Diamonds': 'cardImages/6_of_diamonds.svg',
+	'7Diamonds': 'cardImages/7_of_diamonds.svg',
+	'8Diamonds': 'cardImages/8_of_diamonds.svg',
+	'9Diamonds': 'cardImages/9_of_diamonds.svg',
+	'10Diamonds': 'cardImages/10_of_diamonds.svg',
+	'JDiamonds': 'cardImages/jack_of_diamonds2.svg',
+	'QDiamonds': 'cardImages/queen_of_diamonds2.svg',
+	'KDiamonds': 'cardImages/king_of_diamonds2.svg',
+	'ADiamonds': 'cardImages/ace_of_diamonds.svg',
+	'2Spades': 'cardImages/2_of_spades.svg',
+	'3Spades': 'cardImages/3_of_spades.svg',
+	'4Spades': 'cardImages/4_of_spades.svg',
+	'5Spades': 'cardImages/5_of_spades.svg',
+	'6Spades': 'cardImages/6_of_spades.svg',
+	'7Spades': 'cardImages/7_of_spades.svg',
+	'8Spades': 'cardImages/8_of_spades.svg',
+	'9Spades': 'cardImages/9_of_spades.svg',
+	'10Spades': 'cardImages/10_of_spades.svg',
+	'JSpades': 'cardImages/jack_of_spades2.svg',
+	'QSpades': 'cardImages/queen_of_spades2.svg',
+	'KSpades': 'cardImages/king_of_spades2.svg',
+	'ASpades': 'cardImages/ace_of_spades.svg',
+	'2Clubs': 'cardImages/2_of_clubs.svg',
+	'3Clubs': 'cardImages/3_of_clubs.svg',
+	'4Clubs': 'cardImages/4_of_clubs.svg',
+	'5Clubs': 'cardImages/5_of_clubs.svg',
+	'6Clubs': 'cardImages/6_of_clubs.svg',
+	'7Clubs': 'cardImages/7_of_clubs.svg',
+	'8Clubs': 'cardImages/8_of_clubs.svg',
+	'9Clubs': 'cardImages/9_of_clubs.svg',
+	'10Clubs': 'cardImages/10_of_clubs.svg',
+	'JClubs': 'cardImages/jack_of_clubs2.svg',
+	'QClubs': 'cardImages/queen_of_clubs2.svg',
+	'KClubs': 'cardImages/king_of_clubs2.svg',
+	'AClubs': 'cardImages/ace_of_clubs.svg',
+}
+
+// this will find card in images array and add it to body
+//TODO:
+// make face a changing variable that will update with cards drawn
+// make a loop that adds images on draw to a cards array in players hand
+const face = 'JClubs'
+let img = $('<img>')
+img.attr('src', images[face]);
+$('body').append(img)
 
 $(document).ready(function() {
 	console.log('fully loaded!')
