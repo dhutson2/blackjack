@@ -206,7 +206,7 @@ const renderDealerFirstCardFace = () => {
 			src: newDealer.hand[i].image, 
 			height: "250px",
 			width: "150px",
-			margin: '15px'
+			margin: '25px'
 		});
 		$('#dealer-current-cards').append(img)
 	}
@@ -234,7 +234,7 @@ const shuffleAndDeal = () => {
 	shuffle(newDeck.deck);
 	dealCards();
 	addPlayerCardValues();
-	addDealerCardValues();
+	dealerFaceCardValue();
 	checkForBlackjack();
 	renderDealerFirstCardFace();
 }
@@ -295,6 +295,20 @@ const dealerHit = () => {
 	renderDealerCardFace();
 }
 
+const dealerFaceCardValue = () => {
+	$('#dealer-hand').empty();
+	let cardValue = newDealer.hand[0].value;
+	if(cardValue == 'A'){
+		cardValue = 11
+	} else if(cardValue == 'J'){
+		cardValue = 10
+	} else if(cardValue == 'Q'){
+		cardValue = 10
+	} else if(cardValue == 'K'){
+		cardValue = 10
+	}
+	$('#dealer-hand').append('Hand points: ' + cardValue)
+}
 
 const addDealerCardValues = () => {
 	for(let i = 0; i < newDealer.hand.length; i++){

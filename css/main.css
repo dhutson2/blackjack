@@ -19,7 +19,7 @@ body{
 
 #dealer-current-cards{
   margin-top: 50px;
-  margin-left: -1000px;
+  margin-left: -800px;
 }
 
 #title{
@@ -34,8 +34,9 @@ body{
 }
 
 #game-buttons{
-  margin-top: 550px;
+  margin-top: 325px;
   margin-left: 20px;
+  position: auto;
 }
 
 #player{
