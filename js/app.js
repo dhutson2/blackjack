@@ -315,9 +315,11 @@ const addDealerCardValues = () => {
 			dealerPoints += 10
 		} else if(newDealer.hand[i].value == 'K'){
 			dealerPoints += 10
-		} else if(newDealer.hand[i].value == 'A'){
+		} else if(newDealer.hand[i].value == 'A'  && playerPoints > 11){
+			dealerPoints += 1
+		} else if(newDealer.hand[i].value == 'A') {
 			dealerPoints += 11
-		} else{
+		}else{
 			dealerPoints += parseInt(newDealer.hand[i].value)
 		}
 		getDealerScore();
@@ -334,6 +336,8 @@ const addPlayerCardValues = () => {
 			playerPoints += 10
 		} else if(newPlayer.hand[i].value == 'K'){
 			playerPoints += 10
+		} else if(newPlayer.hand[i].value == 'A' && playerPoints > 11){
+			playerPoints += 1
 		} else if(newPlayer.hand[i].value == 'A'){
 			playerPoints += 11
 		} else{
