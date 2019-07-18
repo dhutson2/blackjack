@@ -7,15 +7,7 @@ const btn = $("#instruction-button")[0];
 const span = $(".close")[0];
 const $shuffle = $('#shuffle')
 
-//TODO:
 
-// Make object to construct images...
-// Constructor parameters are suit and value that will tell the object which card image to render
-// Images object has key: value of Qclubs, 9,hearts, etc. and value is SVG image link
-// EX:
-//  const images = {
-// 	'9hearts': '../cardImages/9_of_hearts.svg'
-// }
 
 const images = {
 	'2Hearts': 'cardImages/2_of_hearts.svg',
@@ -72,13 +64,15 @@ const images = {
 	'AClubs': 'cardImages/ace_of_clubs.svg',
 }
 
-// this will find card in images array and add it to body
 
 
 $(document).ready(function() {
 	console.log('fully loaded!')
 	$('#home-page').show()
 	$('#cards').hide()
+	$('#stand').hide()
+	$('#hit').hide()
+	$('#shuffle').hide()
    });
 
 $('#start-game').click(function(){
