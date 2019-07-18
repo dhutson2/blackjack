@@ -82,6 +82,9 @@ $('#start-game').click(function(){
 	shuffleAndDeal();
 	renderPlayerCardFace();
 	$('#cards').show()
+	$('#stand').show()
+	$('#hit').show()
+	$('#shuffle').show()
   })
 
 $('#shuffle').click(function(){
