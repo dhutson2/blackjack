@@ -1,7 +1,8 @@
 # IMPORTS HERE
+from peewee import *
 
 
-DATABASE = Sqlitedatabase('odds.sqlite')
+DATABASE = SqliteDatabase('odds.sqlite')
 
 
 class Odds_Table(Model):
@@ -9,6 +10,9 @@ class Odds_Table(Model):
     chance_for_this_hand_value_after_2_cards = IntegerField()
     chance_third_card_value_not_over_21 = IntegerField()
     chance_fourth_card_value_not_over_21 = IntegerField()
+
+    class Meta:
+        database = DATABASE
 
 
 def initialize():
